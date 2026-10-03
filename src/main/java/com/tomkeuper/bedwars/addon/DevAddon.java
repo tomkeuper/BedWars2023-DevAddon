@@ -1,6 +1,5 @@
 package com.tomkeuper.bedwars.addon;
 
-import com.avaje.ebeaninternal.server.lib.util.NotFoundException;
 import com.tomkeuper.bedwars.addon.command.BedWarsDevSubCommand;
 import com.tomkeuper.bedwars.addon.command.DevCommandExecutor;
 import com.tomkeuper.bedwars.addon.integrations.BedWars2023;
@@ -49,7 +48,7 @@ public class DevAddon extends JavaPlugin {
     private void populateIntegrations(IIntegration... integrations) {
         for (IIntegration integration : integrations) {
             if (!integration.enable()) {
-                throw new NotFoundException("Plugin could not be enabled as one or more of the dependencies could not be hooked.");
+                throw new RuntimeException("Plugin could not be enabled as one or more of the dependencies could not be hooked.");
             }
         }
     }
